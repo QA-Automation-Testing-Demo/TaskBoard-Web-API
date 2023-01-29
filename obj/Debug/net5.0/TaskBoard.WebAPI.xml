@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TaskBoard.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:TaskBoard.WebAPI.Controllers.BoardsController.GetBoards">
+             <summary>
+             Gets all boards.
+             </summary>
+             <remarks>
+             You should be an authenticated user!
+             
+             Sample request:
+            
+                 GET /api/boards
+                 {
+                     
+                 }
+             </remarks>
+             <response code="200">Returns "OK" with a list of all boards</response>
+             <response code="401">Returns "Unauthorized" when user is not authenticated</response> 
+        </member>
+        <member name="M:TaskBoard.WebAPI.Controllers.HomeController.Index">
+            <summary>
+            Gets API info (Swagger UI).
+            </summary>
+            <remarks>
+            Sample request:
+                GET /
+            </remarks>
+            <response code="200">Returns "OK" with API info.</response>
+        </member>
+        <member name="M:TaskBoard.WebAPI.Controllers.TasksController.GetTasksCount">
+             <summary>
+             Gets tasks count.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 GET /api/tasks/count
+                 {
+                     
+                 }
+             </remarks>
+             <response code="200">Returns "OK" with tasks count</response>  
+        </member>
+        <member name="M:TaskBoard.WebAPI.Controllers.TasksController.GetTasks">
+             <summary>
+             Gets a list with all tasks.
+             </summary>
+             <remarks>
+             You should be an authenticated user!
+             
+             Sample request:
+            
+                 GET /api/tasks
+                 {
+                     
+                 }
+             </remarks>
+             <response code="200">Returns "OK" with a list of all tasks</response>
+             <response code="401">Returns "Unauthorized" when user is not authenticated</response>    
+        </member>
+        <member name="M:TaskBoard.WebAPI.Controllers.TasksController.GetTaskById(System.Int32)">
+             <summary>
+             Gets a task by id.
+             </summary>
+             <remarks>
+             You should be an authenticated user!
+             
+             Sample request:
+            
+                 GET /api/tasks/{id}
+                 {
+                     
+                 }
+             </remarks>
+             <response code="200">Returns "OK" with the task</response>
+             <response code="401">Returns "Unauthorized" when user is not authenticated</response>    
+             <response code="404">Returns "Not Found" when task with the given id doesn't exist</response> 
+        </member>
+        <member name="M:TaskBoard.WebAPI.Controllers.TasksController.GetTasksByKeyword(System.String)">
+             <summary>
+             Gets tasks by keyword.
+             </summary>
+             <remarks>
+             You should be an authenticated user!
+             
+             Sample request:
+            
+                 GET /api/tasks/search/{keyword}
+                 {
+                     
+                 }
+             </remarks>
+             <response code="200">Returns "OK" with the tasks</response>
+             <response code="401">Returns "Unauthorized" when user is not authenticated</response>
+        </member>
+        <member name="M:TaskBoard.WebAPI.Controllers.TasksController.GetTasksByBoardName(System.String)">
+             <summary>
+             Gets tasks by board name.
+             </summary>
+             <remarks>
+             You should be an authenticated user!
+             
+             Sample request:
+            
+                 GET /api/tasks/board/{boardName}
+                 {
+                     
+                 }
+             </remarks>
+             <response code="200">Returns "OK" with the tasks</response>
+             <response code="401">Returns "Unauthorized" when user is not authenticated</response>
+        </member>
+        <member name="M:TaskBoard.WebAPI.Controllers.TasksController.CreateTask(TaskBoard.WebAPI.Models.Task.TaskBindingModel)">
+             <summary>
+             Creates a new task.
+             </summary>
+             <remarks>
+             You should be an authenticated user!
+             
+             Sample request:
+            
+                 POST /api/tasks/create
+                 {
+                        "title": "Add Tests",
+                        "description": "API + UI tests",
+                        "board": "Open"
+                 }
+             </remarks>
+             <response code="201">Returns "Created" with the created event</response>
+             <response code="400">Returns "Bad Request" when an invalid request is sent</response>   
+             <response code="401">Returns "Unauthorized" when user is not authenticated</response> 
+        </member>
+        <member name="M:TaskBoard.WebAPI.Controllers.TasksController.PutTask(System.Int32,TaskBoard.WebAPI.Models.Task.TaskBindingModel)">
+             <summary>
+             Edits a task.
+             </summary>
+             <remarks>
+             You should be an authenticated user!
+             You should be the owner of the edited task!
+             
+             Sample request:
+            
+                 PUT /api/tasks/{id}
+                 {
+                        "title": "Add More Tests",
+                        "description": "API + UI tests",
+                        "board": "In Progress"
+                 }
+             </remarks>
+             <response code="204">Returns "No Content"</response>
+             <response code="400">Returns "Bad Request" when an invalid request is sent</response>   
+             <response code="401">Returns "Unauthorized" when user is not authenticated or is not the owner of the task</response>  
+             <response code="404">Returns "Not Found" when task with the given id doesn't exist</response>  
+        </member>
+        <member name="M:TaskBoard.WebAPI.Controllers.TasksController.PatchTask(System.Int32,TaskBoard.WebAPI.Models.Task.TaskPatchModel)">
+             <summary>
+             Partially edits a task.
+             </summary>
+             <remarks>
+             You should be an authenticated user!
+             You should be the owner of the edited task!
+             
+             Sample request:
+            
+                 PATCH /api/tasks/{id}
+                 {
+                        "title": "Add Even More Tests",
+                 }
+             </remarks>
+             <response code="204">Returns "No Content"</response>
+             <response code="400">Returns "Bad Request" when an invalid request is sent</response>   
+             <response code="401">Returns "Unauthorized" when user is not authenticated or is not the owner of the task</response>  
+             <response code="404">Returns "Not Found" when task with the given id doesn't exist</response>
+        </member>
+        <member name="M:TaskBoard.WebAPI.Controllers.TasksController.DeleteTask(System.Int32)">
+             <summary>
+             Deletes a task.
+             </summary>
+             <remarks>
+             You should be an authenticated user!
+             You should be the owner of the deleted task!
+             
+             Sample request:
+            
+                 DELETE /api/tasks/{id}
+                 {
+                        
+                 }
+             </remarks>
+             <response code="200">Returns "OK" with the deleted task</response>
+             <response code="401">Returns "Unauthorized" when user is not authenticated or is not the owner of the task</response>  
+             <response code="404">Returns "Not Found" when task with the given id doesn't exist</response> 
+        </member>
+        <member name="M:TaskBoard.WebAPI.Controllers.UsersController.Login(TaskBoard.WebAPI.Models.User.LoginModel)">
+             <summary>
+             Logs a user in. (Default user credentials: guest / guest)
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST /api/users/login
+                 {
+                    "username": "guest",
+                    "password": "guest"
+                 }
+            
+             </remarks>
+             <param name="model"></param>
+             <response code="200">Returns "OK" with JWT token with expiration date.</response>
+             <response code="401">Returns "Unauthorized" when username or password doesn't match.</response>    
+        </member>
+        <member name="M:TaskBoard.WebAPI.Controllers.UsersController.Register(TaskBoard.WebAPI.Models.User.RegisterModel)">
+             <summary>
+             Registers a new user.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST /api/users/register
+                 {
+                     "username": "someUsername",
+                     "email": "someUsername@mail.bg",
+                     "firstName": "someName",
+                     "lastName": "someLastName",
+                     "password": "somePassword",
+                     "confirmPassword": "somePassword"
+                 }
+             </remarks>
+             <response code="200">Returns "OK" with "Success" status and "User created successfully! message".</response>
+             <response code="400">Returns "Bad Request" when user already exists or user creation failed.</response>    
+        </member>
+        <member name="M:TaskBoard.WebAPI.Controllers.UsersController.GetAll">
+             <summary>
+             Gets a list with all users.
+             </summary>
+             <remarks>
+             You should be an authenticated user!
+             
+             Sample request:
+            
+                 GET /api/users
+                 {
+                     
+                 }
+             </remarks>
+             <response code="200">Returns "OK" with a list of all users.</response>
+             <response code="401">Returns "Unauthorized" when user is not authenticated.</response>    
+        </member>
+    </members>
+</doc>

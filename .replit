@@ -1,0 +1,10 @@
+run = "dotnet watch run --urls=http://0.0.0.0:5000"
+
+[packager]
+language = "dotnet"
+
+[packager.features]
+packageSearch = true
+
+[nix]
+channel = "stable-21_11"
